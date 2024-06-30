@@ -21,15 +21,15 @@
 
 ### [박우빈님 강의](<Lecture/박우빈님 강의/>)
 
-- [Practical Testing](<Lecture/Practical Testing>)
+- [Practical Testing](<Lecture/박우빈님 강의/Practical Testing>)
 
 ### [정수원님 강의](<Lecture/정수원님 강의/>)
 
-- [자바 동시성 프로그래밍](<Lecture/자바 동시성 프로그래밍>)
+- [자바 동시성 프로그래밍](<Lecture/정수원님 강의/자바 동시성 프로그래밍>)
 
 ### [여정민님 강의](<Lecture/여정민님 강의/>)
 
-- [견고한 결제 시스템 구축 강의](<Lecture/견고한 결제 시스템 구축 강의>)
+- [견고한 결제 시스템 구축 강의](<Lecture/여정민님 강의/견고한 결제 시스템 구축 강의>)
 
 ### [김영한님 강의](<Lecture/김영한님 강의/>)
 
