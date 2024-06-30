@@ -10,12 +10,13 @@
 - [이펙티브자바](Book/자바/이펙티브자바)
 - [자바 잘 읽는법](<Book/자바/자바 잘 읽는법>)
 - [자바병렬프로그래밍](Book/자바/자바병렬프로그래밍)
+- [자바성능튜닝 이야기](<Book/자바/자바성능튜닝 이야기>)
 
 ## 강의
 
 ### 박우빈님 강의
 
-- [Practical Testing](<Lecture/Practical Testing>)
+- [테스트코드 강의](<Lecture/Practical Testing>)
 
 ### 정수원님 강의
 
