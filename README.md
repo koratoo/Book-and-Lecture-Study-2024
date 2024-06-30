@@ -19,9 +19,9 @@
 
 ## 강의
 
-### Lecture/박우빈님 강의
+### [박우빈님 강의](<Lecture/박우빈님 강의/>)
 
-- [테스트코드 강의](<Lecture/Practical Testing>)
+- [Practical Testing](<Lecture/Practical Testing>)
 
 ### Lecture/정수원님 강의
 
