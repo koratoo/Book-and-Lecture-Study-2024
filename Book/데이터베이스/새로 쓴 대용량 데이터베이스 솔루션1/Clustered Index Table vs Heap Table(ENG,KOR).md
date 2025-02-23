@@ -1,4 +1,108 @@
-### **인덱스 일체형 테이블과 인덱스 분리형 테이블**
+
+### **Clustered Index Table vs. Heap Table**(ENG)
+
+In databases, tables can be classified into **Clustered Index Tables** and **Heap Tables**, depending on how data and indexes are stored.
+
+---
+
+## **1. Clustered Index Table**
+**: A table where data is stored in a sorted order based on the primary key index.**  
+MySQL’s **InnoDB** and SQL Server’s **Clustered Index** are representative examples.
+
+### **Characteristics**
+- **Data itself is stored as a clustered index**  
+  → The index determines the physical storage order of the data.
+- **The primary key index automatically becomes the clustered index**  
+  → Data is physically sorted based on the primary key. If no primary key exists, the DBMS internally generates a similar structure.
+- **The index’s leaf nodes point directly to actual data pages**  
+  → Secondary indexes reference the clustered index key values instead of direct row locations.
+
+### **Advantages**
+- **Fast primary key-based lookups**  
+  → Since data is stored in a sorted manner, range scans and sorting operations are efficient.
+- **Reduced I/O cost**  
+  → The index and data are stored together, eliminating the need to search for data pages separately.
+
+### **Disadvantages**
+- **Insert/Update/Delete operations can be inefficient**  
+  → If new data needs to be inserted between existing data, **page splits** can occur.
+- **Higher lookup cost for secondary indexes**  
+  → Secondary indexes must first find the clustered index key before retrieving actual data, requiring an extra lookup step.
+
+---
+
+## **2. Heap Table**
+**: A table where data is stored in an unordered manner.**  
+MySQL’s **MyISAM**, PostgreSQL, and Oracle’s default tables are examples.
+
+### **Characteristics**
+- **Data is stored without a specific order**  
+  → It follows the insert order rather than being sorted based on a specific column.
+- **No clustered index**  
+  → Even if a primary key exists, the data is not stored in a sorted order.
+- **The index’s leaf nodes store row IDs (physical addresses)**  
+  → Secondary indexes store direct row locations instead of referencing another index.
+
+### **Advantages**
+- **Fast insert operations**  
+  → Since data does not need to be sorted, there are no **page splits**.
+- **Consistent lookup cost for secondary indexes**  
+  → Secondary indexes directly point to the data, avoiding additional lookup steps.
+
+### **Disadvantages**
+- **Slower primary key lookups**  
+  → The index lookup retrieves the row ID first, requiring an extra step to read the actual data.
+- **Sorting operations are inefficient**  
+  → Additional sorting is required when retrieving ordered data.
+
+---
+
+## **3. Summary Comparison**
+
+|  Category  | **Clustered Index Table** | **Heap Table** |
+|------------|--------------------------|----------------|
+| **Data Storage** | Stored in primary key order | Stored in insert order |
+| **Primary Key Index** | Stored as a clustered index | Stored separately |
+| **Data Lookup** | Fast for primary key lookups | Requires index lookup for row ID |
+| **Secondary Index Lookup** | Requires additional lookup | Directly points to data |
+| **Insert Performance** | May cause page splits (slower) | Fast |
+| **Delete Performance** | Can cause fragmentation | Fast |
+| **Sorted Queries** | Efficient | Inefficient |
+
+---
+
+## **4. When to Use Each Type?**
+- **Clustered Index Table**
+  - When **range queries or primary key lookups** are frequent
+  - When **sorted data processing** is important (e.g., time-series data, analytics)
+  - When **read performance optimization** is needed
+
+- **Heap Table**
+  - When **inserts/deletes are frequent** (e.g., logging, temporary tables)
+  - When fast **bulk inserts** are required
+  - When data sorting is **not necessary**
+
+---
+
+## **5. Differences in MySQL and PostgreSQL**
+- **MySQL**
+  - InnoDB → **Clustered Index Table**
+  - MyISAM → **Heap Table**
+- **PostgreSQL**
+  - Default tables are Heap Tables.
+  - `CLUSTER` command can reorder data based on an index, but it does not maintain this automatically.
+
+---
+
+### **Conclusion**
+- **Clustered Index Tables** are better for **fast reads and sorted queries**.
+- **Heap Tables** are better for **frequent inserts/deletes and unordered storage**.
+
+Choosing the right table structure based on your use case is crucial for optimal performance! 🚀
+
+
+
+### **인덱스 일체형 테이블과 인덱스 분리형 테이블**(KOR)
 
 데이터베이스에서는 **데이터와 인덱스가 저장되는 방식**에 따라 **인덱스 일체형 테이블**(Clustered Index Table)과 **인덱스 분리형 테이블**(Heap Table)로 구분할 수 있습니다.
 
