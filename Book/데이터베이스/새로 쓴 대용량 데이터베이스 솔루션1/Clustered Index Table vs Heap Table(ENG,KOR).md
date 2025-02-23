@@ -101,6 +101,7 @@ MySQL’s **MyISAM**, PostgreSQL, and Oracle’s default tables are examples.
 Choosing the right table structure based on your use case is crucial for optimal performance! 🚀
 
 
+---
 
 ### **인덱스 일체형 테이블과 인덱스 분리형 테이블**(KOR)
 
